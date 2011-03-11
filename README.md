@@ -2,7 +2,7 @@ I wanted a tool that made it really easy to give feedback in a visually intuitiv
 
 Here's how it works:
 
-* Paste the original text into the copyediting area.
+* Paste your original text into the copyediting area.
 
 * When you're ready to start making changes, hit "mark start."
 

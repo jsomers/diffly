@@ -8,10 +8,15 @@ h1 {
 p {
     font-size: 1.4em;
     margin-left: 12px;
-    color: #777;
+    color: #333;
     line-height: 1.3em;
     width: 500px;
     text-align: justify;
+}
+ol {
+    font-size: 1.4em;
+    line-height: 1.4em;
+    width: 500px;
 }
 ins {
 	background: #ddffdd;
