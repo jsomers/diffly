@@ -2,8 +2,12 @@ body {
     background-color: white;
     font: 62.5% Palatino, "times new roman", serif;
 }
+h1 {
+    margin-left: 12px;
+}
 p {
     font-size: 1.4em;
+    margin-left: 12px;
     color: #777;
     line-height: 1.3em;
     width: 500px;
@@ -37,7 +41,7 @@ span.circle {
 	font-weight: bold;
 }
 .preview {
-    padding-top: 20px;
+    padding-top: 14px;
     padding-left: 10px;
 }
 .header {
@@ -48,6 +52,7 @@ span.circle {
 #output {
     font-size: 1.4em;
     line-height: 1.5em;
+    margin-top: 9px;
     color: #333;
     width: 500px;
     text-align: justify;
