@@ -1,0 +1,33 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".show_comment").live("mouseover",
+			function(ev) {
+				var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
+				$(tip).css("top", ev.pageY - 30 + "px");
+				$(tip).css("left", ev.pageX + 20 + "px");
+				$(tip).show();
+			}
+		);
+
+		$(".show_comment").live("mouseout",
+			function(ev) {
+				var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
+				$(tip).hide();
+			}
+		);
+
+		$(".show_comment").live("mousemove",
+			function(ev) {
+				var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
+				$(tip).css("top", ev.pageY - 30 + "px");
+				$(tip).css("left", ev.pageX + 20 + "px");
+			}
+		);
+	})
+</script>
+
+<div class="header" style="margin-bottom: 10px;">Edited version</div>
+
+<div id="output">
+	<%= raw(@blob.content) %>
+</div>

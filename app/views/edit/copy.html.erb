@@ -1,0 +1,146 @@
+<table>
+	<tr>
+		<td valign="top">
+		<form action="#" onsubmit="return false">
+			<dl class="form">
+				<dt>Copyediting area</dt>
+				<dd><textarea id="text"></textarea></dd>
+			</dl>
+			<p style="margin-left: 10px;">
+				<input type="button" onclick="mark()" value="mark start">
+				<input type="button" id="finish_button" onclick="save()" value="finish">
+				<a href="#" id="blob_hash">Blob <span></span> generated.</a>
+			</p>
+		</form>
+		</td>
+		<td valign="top" class="preview" style="margin-top: 20px;">
+			<span class="header">Preview area</span>
+			<div id="output"></div>
+		</td>
+	</tr>
+</table>
+
+<script type="text/javascript" language="javascript">
+	new function($) {
+		$.fn.setCursorPosition = function(pos) {
+			if ($(this).get(0).setSelectionRange) {
+				$(this).get(0).setSelectionRange(pos, pos);
+			} else if ($(this).get(0).createTextRange) {
+				var range = $(this).get(0).createTextRange();
+				range.collapse(true);
+				range.moveEnd('character', pos);
+				range.moveStart('character', pos);
+				range.select();
+			}
+		}
+	}(jQuery);
+	
+	var dmp = new diff_match_patch();
+	original = null;
+	finished = null;
+
+	function mark() {
+		original = $("#text").val();
+		$("#output").html(original);
+	}
+	
+	function save() {
+		$.post("/edit/make_blob", {content: $("#output").html()},
+			function(ret) {
+				$("#finish_button").hide();
+				$("#blob_hash span").html(ret);
+				$("#blob_hash").attr("href", "/view/" + ret).show();
+			})
+	}
+
+	function launch() {
+		var text1 = original;
+		var text2 = $("#text").val();
+		dmp.Diff_Timeout = 1;
+		dmp.Diff_EditCost = 4;
+
+		var d = dmp.diff_main(text1, text2);
+
+		dmp.diff_cleanupSemantic(d);
+		var ds = dmp.diff_prettyHtml(d);
+		$("#output").html(commentify2(ds));
+	}
+	
+	$("#text").keyup(function() {
+		if (original != null)
+			launch();
+	})
+	
+	$("#text").keydown(function(e) {
+		var end = $("#text")[0].selectionEnd;
+		var strt = $("#text")[0].selectionStart;
+		var d = end - strt;
+		if (e.keyCode == 219 && d != 0) {
+			comment_wrap();
+			$(this).setCursorPosition(end + 3);
+			return false;
+		};
+	})
+	
+	function comment_wrap() {
+		var textArea = $("#text");
+		var len = textArea.val().length;
+		var start = textArea[0].selectionStart;
+		var end = textArea[0].selectionEnd;
+		var selectedText = textArea.val().substring(start, end);
+		var replacement = "[" + selectedText + "]()";
+		textArea.val(textArea.val().substring(0, start) + replacement + textArea.val().substring(end, len));
+	};
+	
+	comments = [];
+	function clean_comments(txt) {
+		var cmnts = /\[(.*?)\]\((.*?)\)/g;
+		while (match = cmnts.exec(txt)) {
+			console.log(match[1].firstIndex);
+		}
+		return txt.replace(cmnts, '$1');
+	}
+	
+	//$(".show_comment").live("mouseover", function() {
+	//	alert($(this).find("span.comment").html())
+	//});
+	
+	$(".show_comment").live("mouseover",
+		function(ev) {
+			var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
+			$(tip).css("top", ev.pageY - 30 + "px");
+			$(tip).css("left", ev.pageX + 20 + "px");
+			$(tip).show();
+		}
+	);
+
+	$(".show_comment").live("mouseout",
+		function(ev) {
+			var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
+			$(tip).hide();
+		}
+	);
+
+	$(".show_comment").live("mousemove",
+		function(ev) {
+			var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
+			$(tip).css("top", ev.pageY - 30 + "px");
+			$(tip).css("left", ev.pageX + 20 + "px");
+		}
+	);
+	
+	function commentify(txt) {
+		var cmnts = /(\[)(.*?)(\])(\(.*?\))/g;
+		return txt.replace(cmnts, '<span class="highlight">$1</span>$2<span class="highlight">$3</span><span class="highlight">$4</span>');
+	}
+	
+	function commentify2(txt) {
+		var cmnts = /(\[)(.*?)(\])\((.*?)\)/g;
+		var index = 0;
+		txt = txt.replace(cmnts, function(_, a, b, c, d) {
+			index = index + 1;
+			return '<span class="highlight">' + a + '</span>' + b + '<span class="highlight">' + c + '</span>' + '<a href="#" class="show_comment" id="' + index + '">&bull;</a>' + '<div class="tooltip" id="' + index + '"><div class="contain"><h3>' + d + '</h3></div></div>';
+		});
+		return txt.replace(/<\/span><\/a>/g, "</a>");
+	}
+</script>

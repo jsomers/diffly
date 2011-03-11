@@ -1,0 +1,102 @@
+body {
+    background-color: white;
+    font: 62.5% Palatino, "times new roman", serif;
+}
+ins {
+	background: #ddffdd;
+	color: black;
+	text-decoration: none;
+}
+code {
+    font-family: Palatino;
+    font-size: 1.0em;
+    background: none;
+    font-weight: bold;
+}
+del {
+	color: #ffcccc;
+}
+
+span.highlight {
+	color: orange;
+	background: white;
+}
+
+span.comment {
+	display: none;
+}
+
+span.circle {
+	font-weight: bold;
+}
+.preview {
+    padding-top: 20px;
+    padding-left: 10px;
+}
+.header {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+#output {
+    font-size: 1.4em;
+    line-height: 1.5em;
+    color: #333;
+    width: 500px;
+    text-align: justify;
+}
+.form textarea {
+    font-family: Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;
+    font-size: 12px;
+    margin: 10px 0px 0px 10px;
+    border: 1px solid #ccc;
+    border-right-color: #ddd;
+    border-bottom-color: #ddd;
+    height: 300px;
+    width: 500px;
+    padding: 5px;
+}
+.form dd {
+    margin-left: 0px;
+}
+dl.form dt {
+    margin: 0;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+.tooltip {
+    display: none;
+    right: auto;
+}
+
+.tooltip {
+	position: absolute;
+	z-index: 3000;
+	border: 1px solid #86acc1;
+	background-color: #fff;
+	opacity: 0.85;
+	max-width: 450px;
+}
+
+.tooltip .contain {
+	background: #cde9f8;
+	border: 2px solid #fff;
+	color: black;
+	padding: 5px;
+}
+.tooltip h3, #tooltip div { 
+	margin: 0;
+	font-size: 12px;
+	font-weight: bold;
+}
+a.show_comment {
+    color: #ff5544;
+    background: none;
+    text-decoration: none;
+}
+#blob_hash {
+    display: none;
+    font-size: 1.4em;
+}
