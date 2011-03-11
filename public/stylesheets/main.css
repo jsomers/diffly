@@ -105,7 +105,7 @@ dl.form dt {
 }
 a.show_comment {
     color: #ff5544;
-    background: none;
+    background: white;
     text-decoration: none;
 }
 #blob_hash {
