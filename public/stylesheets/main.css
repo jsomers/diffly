@@ -2,6 +2,13 @@ body {
     background-color: white;
     font: 62.5% Palatino, "times new roman", serif;
 }
+p {
+    font-size: 1.4em;
+    color: #777;
+    line-height: 1.3em;
+    width: 500px;
+    text-align: justify;
+}
 ins {
 	background: #ddffdd;
 	color: black;
@@ -98,5 +105,4 @@ a.show_comment {
 }
 #blob_hash {
     display: none;
-    font-size: 1.4em;
 }

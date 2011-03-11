@@ -1,3 +1,5 @@
+<h1>Diff-Based Copy Editing Tool</h1>
+<p>Paste the original text into the copyediting area. When you're ready to start making changes, hit "mark start." There are three basic changes you can make: <strong>insertions</strong>, <strong>deletions</strong>, and <strong>comments</strong>. To make a comment, just highlight some text you want to comment on and hit the "[" key. It'll surround your selection in brackets. Put your comment in the parentheses that follow.</p>
 <table>
 	<tr>
 		<td valign="top">
@@ -49,7 +51,7 @@
 			function(ret) {
 				$("#finish_button").hide();
 				$("#blob_hash span").html(ret);
-				$("#blob_hash").attr("href", "/view/" + ret).show();
+				$("#blob_hash").attr("href", "/" + ret).show();
 			})
 	}
 
