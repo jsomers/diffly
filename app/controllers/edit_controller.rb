@@ -9,7 +9,8 @@ class EditController < ApplicationController
   def make_blob
     content = params[:content]
     hash = Digest::MD5.hexdigest(content).first(7)
-    Blob.create(:hash => hash, :content => content)
+    b = Blob.new(:hash => hash, :content => content)
+    b.save
     render :text => hash
   end
 end
