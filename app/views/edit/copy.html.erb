@@ -165,7 +165,7 @@
 		var index = 0;
 		txt = txt.replace(cmnts, function(_, a, b, c, d) {
 			index = index + 1;
-			return '<span class="highlight" id="' + index + '">' + a + '</span>' + b + '<span class="highlight" id="' + index + '">' + c + '</span>' + '<a href="#" class="show_comment" id="' + index + '">&bull;</a>' + '<div class="tooltip" id="' + index + '"><div class="contain"><h3>' + d + '</h3></div></div>';
+			return '<span class="highlight" id="' + index + '">' + a + '</span>' + b + '<span class="highlight" id="' + index + '">' + c + '</span>' + '<a href="#" class="show_comment" id="' + index + '">[note]</a>' + '<div class="tooltip" id="' + index + '"><div class="contain"><h3>' + d + '</h3></div></div>';
 		});
 		return txt.replace(/<\/span><\/a>/g, "</a>");
 	}

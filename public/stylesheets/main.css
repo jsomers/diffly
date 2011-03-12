@@ -128,18 +128,21 @@ dl.form dt {
     text-decoration: underline;
 }
 a.show_comment {
-    color: #ff5544;
+    color: orange;
     background: white;
-    text-decoration: none;
-    font-size: 15px;
+    text-decoration: underline;
+    font-size: 10px;
+}
+a.show_comment:hover {
+    color: red;
 }
 .edit_page a.show_comment {
     position: absolute;
-    left: 1050px;
+    left: 1053px;
 }
 .show_page a.show_comment {
     position: absolute;
-    left: 510px;
+    left: 513px;
 }
 #blob_hash {
     display: none;
