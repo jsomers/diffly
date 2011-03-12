@@ -133,7 +133,7 @@
 			$(tip).css("top", ev.pageY - 30 + "px");
 			$(tip).css("left", ev.pageX + 20 + "px");
 			$(tip).show();
-			$(".highlight[id=" + $(this).attr("id") + "]").addClass("hovered");
+			$(".highlight[nid=" + $(this).attr("id") + "]").addClass("hovered");
 		}
 	);
 
@@ -141,7 +141,7 @@
 		function(ev) {
 			var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
 			$(tip).hide();
-			$(".highlight[id=" + $(this).attr("id") + "]").removeClass("hovered");
+			$(".highlight[nid=" + $(this).attr("id") + "]").removeClass("hovered");
 		}
 	);
 
@@ -165,7 +165,7 @@
 		var index = 0;
 		txt = txt.replace(cmnts, function(_, a, b, c, d) {
 			index = index + 1;
-			return '<span class="highlight" id="' + index + '">' + a + '</span>' + b + '<span class="highlight" id="' + index + '">' + c + '</span>' + '<a href="#" class="show_comment" id="' + index + '">[note]</a>' + '<div class="tooltip" id="' + index + '"><div class="contain"><h3>' + d + '</h3></div></div>';
+			return '<span class="highlight" nid="' + index + '">' + a + '</span>' + b + '<span class="highlight" nid="' + index + '">' + c + '</span>' + '<a href="#" class="show_comment" id="' + index + '">[note]</a>' + '<div class="tooltip" id="' + index + '"><div class="contain"><h3>' + d + '</h3></div></div>';
 		});
 		return txt.replace(/<\/span><\/a>/g, "</a>");
 	}
