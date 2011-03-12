@@ -108,10 +108,21 @@ dl.form dt {
 	font-size: 12px;
 	font-weight: bold;
 }
+span.highlight {
+    font-weight: bold;
+}
+span.highlight.hovered {
+    color: red;
+    font-weight: normal;
+}
 .highlight {
     font-weight: bold;
 }
 .highlight.hovered {
+    color: red;
+    font-weight: normal;
+}
+.hovered {
     color: red;
     font-weight: normal;
 }
