@@ -6,7 +6,7 @@
 				$(tip).css("top", ev.pageY - 30 + "px");
 				$(tip).css("left", ev.pageX + 20 + "px");
 				$(tip).show();
-				$(".highlight[nid=" + $(this).attr("id") + "]").addClass("hovered");
+				$(".highlight[nid=" + $(this).attr("id") + "]").css("color", "red").css("font-weight", "normal");
 			}
 		);
 
@@ -14,7 +14,7 @@
 			function(ev) {
 				var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
 				$(tip).hide();
-				$(".highlight[nid=" + $(this).attr("id") + "]").removeClass("hovered");
+				$(".highlight[nid=" + $(this).attr("id") + "]").css("color", "orange").css("font-weight", "bold");
 			}
 		);
 
