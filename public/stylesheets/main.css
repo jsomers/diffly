@@ -33,9 +33,13 @@ del {
 	color: #ffcccc;
 }
 
-span.highlight {
+.highlight {
 	color: orange;
 	background: white;
+}
+.highlight.hovered {
+    color: red;
+    font-weight: normal;
 }
 
 span.comment {
@@ -107,24 +111,6 @@ dl.form dt {
 	margin: 0;
 	font-size: 12px;
 	font-weight: bold;
-}
-span.highlight {
-    font-weight: bold;
-}
-span.highlight.hovered {
-    color: red;
-    font-weight: normal;
-}
-.highlight {
-    font-weight: bold;
-}
-.highlight.hovered {
-    color: red;
-    font-weight: normal;
-}
-.hovered {
-    color: red;
-    font-weight: normal;
 }
 .toggles {
     font-family: helvetica;

@@ -1,3 +1,14 @@
+<div class="toggles">
+	<span id="markup"><strong>marked up</strong></span><a href="#" id="markup-link" style="display: none;">marked up</a> | <span id="clean" style="display: none;"><strong>clean final</strong></span><a href="#" id="clean-link">clean final</a>
+</div>
+
+<div class="show_page">
+<div id="output">
+	<span id="markup-content"><%= raw(@blob.content) %></span>
+	<span id="raw-content" style="display: none;"><%= raw(@blob.raw) %></span>
+</div>
+</div>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".show_comment").live("mouseover",
@@ -6,7 +17,7 @@
 				$(tip).css("top", ev.pageY - 30 + "px");
 				$(tip).css("left", ev.pageX + 20 + "px");
 				$(tip).show();
-				$(".highlight[nid=" + $(this).attr("id") + "]").css("color", "red").css("font-weight", "normal");
+				$(".highlight[nid=" + $(this).attr("id") + "]").addClass("hovered");
 			}
 		);
 
@@ -14,7 +25,7 @@
 			function(ev) {
 				var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
 				$(tip).hide();
-				$(".highlight[nid=" + $(this).attr("id") + "]").css("color", "orange").css("font-weight", "bold");
+				$(".highlight[nid=" + $(this).attr("id") + "]").removeClass("hovered");
 			}
 		);
 
@@ -42,14 +53,3 @@
 		
 	})
 </script>
-
-<div class="toggles">
-	<span id="markup"><strong>marked up</strong></span><a href="#" id="markup-link" style="display: none;">marked up</a> | <span id="clean" style="display: none;"><strong>clean final</strong></span><a href="#" id="clean-link">clean final</a>
-</div>
-
-<div class="show_page">
-<div id="output">
-	<span id="markup-content"><%= raw(@blob.content) %></span>
-	<span id="raw-content" style="display: none;"><%= raw(@blob.raw) %></span>
-</div>
-</div>
