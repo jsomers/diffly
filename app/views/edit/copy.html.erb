@@ -12,12 +12,13 @@
 				<input type="button" onclick="mark()" value="mark start">
 				<input type="button" id="finish_button" onclick="save()" value="finish">
 				<a href="#" id="blob_hash">Blob <span></span> generated.</a>
+				<input type="button" id="regen_blob" value="regenerate" style="display: none;">
 			</p>
 		</form>
 		</td>
 		<td valign="top" class="preview" style="margin-top: 20px;">
 			<span class="header">Preview area</span>
-			<div id="output"></div>
+			<div class="edit_page"><div id="output"></div></div>
 		</td>
 	</tr>
 </table>
@@ -53,13 +54,25 @@
 	}
 	
 	function save() {
-		$.post("/edit/make_blob", {content: $("#output").html()},
+		$.post("/edit/make_blob", {content: $("#output").html(), raw: clean_comments( $("#text").val() )},
 			function(ret) {
 				$("#finish_button").hide();
 				$("#blob_hash span").html(ret);
+				$("#regen_blob").show();
 				$("#blob_hash").attr("href", "/" + ret).show();
-			})
+		})
 	}
+	
+	$("#regen_blob").click(function() {
+		$(this).hide();
+		$("#blob_hash").hide();
+		$.post("/edit/regen_blob", {content: $("#output").html(), raw: clean_comments( $("#text").val() ), old_hash: $("#blob_hash span").html()},
+			function(ret) {
+				$("#blob_hash span").html(ret);
+				$("#blob_hash").attr("href", "/" + ret).show();
+				$("#regen_blob").show();
+			})
+	});
 
 	function launch() {
 		var text1 = original;
@@ -103,9 +116,6 @@
 	comments = [];
 	function clean_comments(txt) {
 		var cmnts = /\[(.*?)\]\((.*?)\)/g;
-		while (match = cmnts.exec(txt)) {
-			console.log(match[1].firstIndex);
-		}
 		return txt.replace(cmnts, '$1');
 	}
 	

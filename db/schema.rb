@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110311072808) do
+ActiveRecord::Schema.define(:version => 20110312021747) do
 
   create_table "blobs", :force => true do |t|
     t.string   "hash"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "raw"
   end
 
 end

@@ -113,6 +113,14 @@ a.show_comment {
     background: white;
     text-decoration: none;
 }
+.edit_page a.show_comment {
+    position: absolute;
+    left: 1050px;
+}
+.show_page a.show_comment {
+    position: absolute;
+    left: 510px;
+}
 #blob_hash {
     display: none;
 }
