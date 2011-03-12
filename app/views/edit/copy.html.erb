@@ -50,11 +50,11 @@
 
 	function mark() {
 		original = $("#text").val();
-		$("#output").html(original);
+		$("#output").html( breaks(original) );
 	}
 	
 	function save() {
-		$.post("/edit/make_blob", {content: $("#output").html(), raw: clean_comments( $("#text").val() )},
+		$.post("/edit/make_blob", {content: $("#output").html(), raw: clean_comments( breaks( $("#text").val() ) )},
 			function(ret) {
 				$("#finish_button").hide();
 				$("#blob_hash span").html(ret);
@@ -66,7 +66,7 @@
 	$("#regen_blob").click(function() {
 		$(this).hide();
 		$("#blob_hash").hide();
-		$.post("/edit/regen_blob", {content: $("#output").html(), raw: clean_comments( $("#text").val() ), old_hash: $("#blob_hash span").html()},
+		$.post("/edit/regen_blob", {content: $("#output").html(), raw: clean_comments( breaks( $("#text").val() ) ), old_hash: $("#blob_hash span").html()},
 			function(ret) {
 				$("#blob_hash span").html(ret);
 				$("#blob_hash").attr("href", "/" + ret).show();
@@ -102,6 +102,10 @@
 			return false;
 		};
 	})
+	
+	function breaks(txt) {
+		return txt.replace(/\n/, '<br><br>');
+	}
 	
 	function comment_wrap() {
 		var textArea = $("#text");
