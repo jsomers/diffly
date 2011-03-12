@@ -35,7 +35,6 @@ del {
 
 .highlight {
 	color: orange;
-	font-weight: bold;
 	background: white;
 }
 .highlight.hovered {
