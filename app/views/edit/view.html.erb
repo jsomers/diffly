@@ -6,6 +6,7 @@
 				$(tip).css("top", ev.pageY - 30 + "px");
 				$(tip).css("left", ev.pageX + 20 + "px");
 				$(tip).show();
+				$(".highlight[id=" + $(this).attr("id") + "]").addClass("hovered");
 			}
 		);
 
@@ -13,6 +14,7 @@
 			function(ev) {
 				var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
 				$(tip).hide();
+				$(".highlight[id=" + $(this).attr("id") + "]").removeClass("hovered");
 			}
 		);
 
@@ -24,13 +26,30 @@
 			}
 		);
 		
+		$(".show_comment").live("click", function() { return false; });
+		
+		$("#clean-link").click(function() {
+			$(this).hide(); $("#clean").show(); $("#markup").hide(); $("#markup-link").show();
+			$("#markup-content").hide(); $("#raw-content").show();
+			return false;
+		});
+		
+		$("#markup-link").click(function() {
+			$(this).hide(); $("#markup").show(); $("#clean").hide(); $("#clean-link").show();
+			$("#raw-content").hide(); $("#markup-content").show();
+			return false;
+		})
+		
 	})
 </script>
 
-<div class="header" style="margin-bottom: 10px;">Edited version (hover over <span style="color: #ff5544;">&bull;</span> in the margin to see notes)</div>
+<div class="toggles">
+	<span id="markup"><strong>marked up</strong></span><a href="#" id="markup-link" style="display: none;">marked up</a> | <span id="clean" style="display: none;"><strong>clean</strong></span><a href="#" id="clean-link">clean</a>
+</div>
 
 <div class="show_page">
 <div id="output">
-	<%= raw(@blob.content) %>
+	<span id="markup-content"><%= raw(@blob.content) %></span>
+	<span id="raw-content" style="display: none;"><%= raw(@blob.raw) %></span>
 </div>
 </div>

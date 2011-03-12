@@ -129,6 +129,7 @@
 			$(tip).css("top", ev.pageY - 30 + "px");
 			$(tip).css("left", ev.pageX + 20 + "px");
 			$(tip).show();
+			$(".highlight[id=" + $(this).attr("id") + "]").addClass("hovered");
 		}
 	);
 
@@ -136,6 +137,7 @@
 		function(ev) {
 			var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
 			$(tip).hide();
+			$(".highlight[id=" + $(this).attr("id") + "]").removeClass("hovered");
 		}
 	);
 
@@ -147,6 +149,8 @@
 		}
 	);
 	
+	$(".show_comment").live("click", function() { return false; });
+	
 	function commentify(txt) {
 		var cmnts = /(\[)(.*?)(\])(\(.*?\))/g;
 		return txt.replace(cmnts, '<span class="highlight">$1</span>$2<span class="highlight">$3</span><span class="highlight">$4</span>');
@@ -157,7 +161,7 @@
 		var index = 0;
 		txt = txt.replace(cmnts, function(_, a, b, c, d) {
 			index = index + 1;
-			return '<span class="highlight">' + a + '</span>' + b + '<span class="highlight">' + c + '</span>' + '<a href="#" class="show_comment" id="' + index + '">&bull;</a>' + '<div class="tooltip" id="' + index + '"><div class="contain"><h3>' + d + '</h3></div></div>';
+			return '<span class="highlight" id="' + index + '">' + a + '</span>' + b + '<span class="highlight" id="' + index + '">' + c + '</span>' + '<a href="#" class="show_comment" id="' + index + '">&bull;</a>' + '<div class="tooltip" id="' + index + '"><div class="contain"><h3>' + d + '</h3></div></div>';
 		});
 		return txt.replace(/<\/span><\/a>/g, "</a>");
 	}
