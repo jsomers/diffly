@@ -34,11 +34,11 @@ del {
 }
 
 .highlight {
-	color: orange;
+	color: #ff11cc;
 	background: white;
 }
 .highlight.hovered {
-    color: red;
+    color: orange;
     font-weight: normal;
 }
 
@@ -125,21 +125,12 @@ dl.form dt {
     text-decoration: underline;
 }
 a.show_comment {
-    color: orange;
+    color: #ff11cc;
     background: white;
-    text-decoration: underline;
-    font-size: 10px;
+    text-decoration: none;
 }
 a.show_comment:hover {
-    color: red;
-}
-.edit_page a.show_comment {
-    position: absolute;
-    left: 1053px;
-}
-.show_page a.show_comment {
-    position: absolute;
-    left: 513px;
+    color: orange;
 }
 #blob_hash {
     display: none;

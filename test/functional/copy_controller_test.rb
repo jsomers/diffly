@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EditControllerTest < ActionController::TestCase
+class CopyControllerTest < ActionController::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true
