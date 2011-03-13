@@ -1,0 +1,28 @@
+<h1>The Diffly Dashboard</h1>
+
+<p>There are <strong><%= @blobs.length %></strong> blobs in the database, for a total of <strong><%= Blob.word_count %></strong> words.</p>
+
+<div id="blob_list">
+<% @blobs.each do |b| %>
+	<p id="<%= b.id %>"><a href="/<%= b.hash %>"><%= truncate(b.raw, {:length => 100}) %></a> <a href="#" blob_id="<%= b.id %>" class="delblob">[x]</a></p>
+<% end %>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".delblob").click(function() {
+			var blob_id = $(this).attr("blob_id");
+			var confirmed = confirm("Are you sure you want to delete this blob?");
+			if (confirmed) {
+				$.post("/copy/destroy", {blob_id: blob_id},
+					function(ret) {
+						if (ret == "okay") {
+							$("p[id=" + blob_id + "]").remove();
+						}
+					}
+				)
+			}
+			return false;
+		})
+	})
+</script>

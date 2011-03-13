@@ -27,4 +27,13 @@ class CopyController < ApplicationController
     end
     render :text => hash
   end
+  
+  def dashboard
+    @blobs = Blob.all
+  end
+  
+  def destroy
+    begin Blob.find(params[:blob_id]).destroy rescue p "oops" end
+    render :text => "okay"
+  end
 end

@@ -56,6 +56,7 @@ Diffrails::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   
   root :to => "copy#edit"
+  match '/dashboard' => "copy#dashboard"
   match '/:id' => "copy#view"
   match ':controller(/:action(/:id(.:format)))'
 end

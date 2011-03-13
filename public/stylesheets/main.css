@@ -140,3 +140,6 @@ a.source {
 a.source:hover {
     text-decoration: underline;
 }
+#blob_list p {
+    width: 750px;
+}
