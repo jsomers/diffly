@@ -130,3 +130,13 @@ a.show_comment:hover {
 #blob_hash {
     display: none;
 }
+a.source {
+    float: right;
+    font-family: helvetica;
+    font-size: 12px;
+    color: #999;
+    text-decoration: none;
+}
+a.source:hover {
+    text-decoration: underline;
+}
