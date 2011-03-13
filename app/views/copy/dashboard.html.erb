@@ -1,6 +1,6 @@
 <h1>The Diffly Dashboard</h1>
 
-<p>There are <strong><%= @blobs.length %></strong> blobs in the database, for a total of <strong><%= Blob.word_count %></strong> words.</p>
+<p>There are <strong><%= @blobs.length %></strong> blobs in the database, for a total of <strong><%= number_with_delimiter(Blob.word_count) %></strong> words.</p>
 
 <div id="blob_list">
 <% @blobs.each do |b| %>
