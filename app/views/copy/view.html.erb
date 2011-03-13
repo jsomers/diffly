@@ -5,37 +5,12 @@
 <div class="show_page">
 <div id="output">
 	<span id="markup-content"><%= raw(@blob.content) %></span>
-	<span id="raw-content" style="display: none;"><%= raw(@blob.raw) %></span>
+	<span id="raw-content" style="display: none;"><%= raw(@blob.raw.gsub(/\n/, "<br>").gsub("<br><br><br>", "<br><br>")) %></span>
 </div>
 </div>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(".show_comment").live("mouseover",
-			function(ev) {
-				var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
-				$(tip).css("top", ev.pageY - 30 + "px");
-				$(tip).css("left", ev.pageX + 20 + "px");
-				$(tip).show();
-				$(".highlight[nid=" + $(this).attr("id") + "]").addClass("hovered");
-			}
-		);
-
-		$(".show_comment").live("mouseout",
-			function(ev) {
-				var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
-				$(tip).hide();
-				$(".highlight[nid=" + $(this).attr("id") + "]").removeClass("hovered");
-			}
-		);
-
-		$(".show_comment").live("mousemove",
-			function(ev) {
-				var tip = $("div.tooltip[id=" + $(this).attr("id") + "]");
-				$(tip).css("top", ev.pageY - 30 + "px");
-				$(tip).css("left", ev.pageX + 20 + "px");
-			}
-		);
 		
 		$(".show_comment").live("click", function() { return false; });
 		

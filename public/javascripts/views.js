@@ -3,7 +3,9 @@ var original = null;
 
 function mark() {
 	original = $("#text").val();
+	$("#finish_button").show();
 	$("#output").html( breaks(original) );
+	diff();
 }
 
 function save() {
@@ -63,12 +65,16 @@ function commentify(txt) {
 }
 
 $(document).ready(function() {
+    
+    if ($("#regen_blob").length > 0)
+        mark();
+    
     $("#regen_blob").click(function() {
     	$(this).hide();
     	$("#blob_hash").hide();
     	$.post("/copy/reblobify", {
     	    "blob[content]": $("#output").html(), 
-    	    "blob[raw]": clean_comments( breaks( $("#text").val() ) ), 
+    	    "blob[raw]": clean_comments( $("#text").val() ), 
     	    old_hash: $("#blob_hash span").html()},
     		function(ret) {
     			$("#blob_hash span").html(ret);

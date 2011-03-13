@@ -13,11 +13,6 @@ p {
     width: 500px;
     text-align: justify;
 }
-ol {
-    font-size: 1.4em;
-    line-height: 1.4em;
-    width: 500px;
-}
 ins {
 	background: #ddffdd;
 	color: black;

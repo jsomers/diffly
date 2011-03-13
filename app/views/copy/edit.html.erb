@@ -1,4 +1,4 @@
-<h1>Diff-Based Copyediting Tool</h1>
+<h1>A Simple Diff-Based Copyediting Tool, by <a href="http://jsomers.net">James Somers</a></h1>
 
 <table>
 	<tr>
@@ -6,11 +6,19 @@
 		<form action="#" onsubmit="return false">
 			<dl class="form">
 				<dt>Copyediting area</dt>
-				<dd><textarea id="text"></textarea></dd>
+				<dd><textarea id="text">* Paste the text you want to edit in here. When you&#8217;re ready to start making changes, hit &#8220;mark start.&#8221;
+
+* There are three basic changes you can make: insertions, deletions, and comments.
+
+* [Example](comments look like this).
+
+* To make a comment, just highlight some text you want to comment on and hit the &#8220;[&#8221; key. It&#8217;ll surround your selection in brackets. Put your comment in the parentheses that follow.
+
+* When you're done, hit the &#8220;finish&#8221; button to get a link to a page with the final marked-up version.</textarea></dd>
 			</dl>
 			<p style="margin-left: 10px;">
 				<input type="button" onclick="mark()" value="mark start">
-				<input type="button" id="finish_button" onclick="save()" value="finish">
+				<input type="button" id="finish_button" onclick="save()" value="finish" style="display: none;">
 				<a href="#" id="blob_hash">Blob <span></span> generated.</a>
 				<input type="button" id="regen_blob" value="regenerate" style="display: none;">
 			</p>
@@ -22,9 +30,3 @@
 		</td>
 	</tr>
 </table>
-<ol>
-<li>Paste your original text into the copyediting area. When you&#8217;re ready to start making changes, hit &#8220;mark start.&#8221;</li>
-<li>There are three basic changes you can make: insertions, deletions, and comments.</li>
-<li>To make a comment, just highlight some text you want to comment on and hit the &#8220;[&#8221; key. It&#8217;ll surround your selection in brackets. Put your comment in the parentheses that follow.</li>
-<li>	Click the &#8220;finish&#8221; button to get a link to a page with the final marked-up version.</li>
-</ol>
