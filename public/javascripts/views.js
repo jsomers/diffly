@@ -129,7 +129,16 @@ $(document).ready(function() {
         if (confirmed) {
             var nid = $(this).attr("nid");
             $(".highlight[nid=" + nid + "], .show_comment[nid=" + nid + "], .tooltip[nid=" + nid + "]").remove();
-            $("#text").val( $("#text").val().replace(/\[(.*?)\]\(.*?\)/, '$1'));
+            var index = 0;
+            var replace = $("#text").val().replace(/\[(.*?)\]\(.*?\)/g, function(_, content) {
+                index = index + 1;
+                if (index == nid) {
+                    return content;
+                } else {
+                    return _;
+                }
+            })
+            $("#text").val(replace);
         };
         return false;
     });
