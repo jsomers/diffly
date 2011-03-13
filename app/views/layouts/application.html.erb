@@ -3,8 +3,8 @@
 <head>
   <title>A Simple Diff-Based Copyediting Tool, by James Somers</title>
   <meta name="description" content="A simple diff-based tool for copyediting and marking up text." /> 
-  <%= javascript_include_tag :all, :cache => true %>
-  <%= stylesheet_link_tag :all, :cache => true %>
+  <%= javascript_include_tag "diff_match_patch", "jquery-1.3.2.min.js", "shared.js", "views.js", :cache => true %>
+  <%= stylesheet_link_tag "main", :cache => true %>
   <link rel="shortcut icon" href="/favicon.ico">
   <%= csrf_meta_tag %>
 </head>
