@@ -4,7 +4,7 @@
 
 <div id="blob_list">
 <% @blobs.each do |b| %>
-	<p id="<%= b.id %>"><a href="/<%= b.hash %>"><%= truncate(b.raw, {:length => 100}) %></a> <a href="#" blob_id="<%= b.id %>" class="delblob">[x]</a></p>
+	<p id="<%= b.id %>" style="color: #999; font-size: 1.3em;"><%= truncate(b.raw, {:length => rand(100), :omission => ""}) %><a href="/<%= b.hash %>" style="font-size: 0.9em;">...</a> <a href="#" blob_id="<%= b.id %>" class="delblob" style="color: #ff9988; font-size: 0.9em;">[x]</a></p>
 <% end %>
 </div>
 
