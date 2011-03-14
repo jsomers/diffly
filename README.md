@@ -1,5 +1,7 @@
 TODO: Commenting on deletions.
 TODO: Have regex scan backwards from closing bracket to find correct brace-pair?
+TODO: Indentation 
+TODO: Bake into gmail?
 
 I wanted a tool that made it really easy to give feedback in a visually intuitive way. It only needed to support (a) deletions, (b) insertions, and (c) comments. I wanted it to generate the visuals automatically as you made changes to the original text.
 

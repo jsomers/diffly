@@ -66,9 +66,6 @@ function commentify(txt) {
 
 $(document).ready(function() {
     
-    if ($("#regen_blob").length > 0)
-        mark();
-    
     $("#regen_blob").click(function() {
     	$(this).hide();
     	$("#blob_hash").hide();

@@ -143,3 +143,6 @@ a.source:hover {
 #blob_list p {
     width: 750px;
 }
+ul li {
+    margin-bottom: 10px;
+}
